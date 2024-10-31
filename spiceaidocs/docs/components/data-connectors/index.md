@@ -31,6 +31,7 @@ Currently supported Data Connectors include:
 | `ftp`, `sftp`   | FTP/SFTP      | Alpha             | Parquet, CSV                        | `append`, `full`            | ❌                             | ✅                 |
 | `graphql`       | GraphQL       | Alpha             | GraphQL                             | `append`, `full`            | ❌                             | ❌                 |
 | `http`, `https` | HTTP(s)       | Alpha             | Parquet, CSV                        | `append`, `full`            | ❌                             | ❌                 |
+| `localpod`      | Local dataset replication | Alpha |                                     | `append`, `full`            | ❌                             | ✅                 |
 | `mssql`         | MS SQL Server | Alpha             | Tabular Data Stream (TDS)           | `append`, `full`            | ❌                             | ❌                 |
 | `sharepoint`    | SharePoint    | Alpha             |                                     | `append`, `full`            | ❌                             | ✅                 |
 | `snowflake`     | Snowflake     | Alpha             | Arrow                               | `append`, `full`            | Roadmap                         | ❌                 |
