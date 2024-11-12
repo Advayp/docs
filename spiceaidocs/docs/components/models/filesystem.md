@@ -50,3 +50,30 @@ models:
       - path: models/llms/llama3.2-1b-instruct/tokenizer_config.json
       - path: models/llms/llama3.2-1b-instruct/config.json
 ```
+
+### Example: Overriding the Chat Template
+Chat templates convert the OpenAI compatible chat messages (see [format](https://platform.openai.com/docs/api-reference/chat/create#chat-create-messages)) and other components of a request
+into a stream of characters for the language model. It follows Jinja3 templating [syntax](https://jinja.palletsprojects.com/en/3.1.x/templates/).
+
+Further details on chat templates can be found [here](https://huggingface.co/docs/transformers/main/chat_templating#advanced-how-do-chat-templates-work).
+
+```yaml
+models:
+  - name: local_model
+    from: file:path/to/my/model.gguf
+    params:
+      chat_template: |
+        {% set loop_messages = messages %}
+        {% for message in loop_messages %}
+          {% set content = '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n\n'+ message['content'] | trim + '<|eot_id|>' %}
+          {{ content }}
+        {% endfor %}
+        {% if add_generation_prompt %}
+          {{ '<|start_header_id|>assistant<|end_header_id|>\n\n' }}
+        {% endif %}
+```
+
+#### Templating Variables
+ - `messages`: List of chat messages, in the OpenAI [format](https://platform.openai.com/docs/api-reference/chat/create#chat-create-messages).
+ - `add_generation_prompt`: Boolean flag whether to add a [generation prompt](https://huggingface.co/docs/transformers/main/chat_templating#what-are-generation-prompts).
+ - `tools`: List of callable tools, in the OpenAI [format](https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools).
