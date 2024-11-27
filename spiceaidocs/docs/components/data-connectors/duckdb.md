@@ -4,9 +4,9 @@ sidebar_label: 'DuckDB Data Connector'
 description: 'DuckDB Data Connector Documentation'
 ---
 
-## Dataset Source
+DuckDB is an in-process SQL OLAP (Online Analytical Processing) database management system designed for analytical query workloads. It is optimized for fast execution and can be embedded directly into applications, providing efficient data processing without the need for a separate database server.
 
-To connect to a DuckDB [persistent database](https://duckdb.org/docs/connect/overview#persistent-database) as a data source, specify `duckdb` as the selector in the `from` value for the dataset.
+This connector supports DuckDB [persistent databases](https://duckdb.org/docs/connect/overview#persistent-database) as a data source for federated SQL queries.
 
 ```yaml
 datasets:
@@ -18,13 +18,53 @@ datasets:
 
 ## Configuration
 
+### `from`
+
+The `from` field supports one of two forms:
+
+| `from`                         | Description                                                                                                                                                                                          |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `duckdb:database.schema.table` | Read data from a table named `database.schema.table` in the DuckDB file                                                                                                                              |
+| `duckdb:*`                     | Read data using any DuckDB function that produces a table. For example one of the [data import](https://duckdb.org/docs/data/overview) functions such as `read_json`, `read_parquet` or `read_csv`. |
+
+### `name`
+
+The dataset name. This will be used as the table name within Spice.
+
+Example:
+```yaml
+datasets:
+  - from: duckdb:database.schema.table
+    name: cool_dataset
+    params:
+      ...
+```
+
+```sql
+SELECT COUNT(*) FROM cool_dataset;
+```
+
+```shell
++----------+
+| count(*) |
++----------+
+| 6001215  |
++----------+
+```
+
+### `params`
+
 The DuckDB data connector can be configured by providing the following `params`:
 
-- `duckdb_open`: The name for the file to back the DuckDB database.
+| Parameter Name | Description                                        |
+| -------------- | -------------------------------------------------- |
+| `duckdb_open`  | The name of the DuckDB database to open. |
 
 Configuration `params` are provided either in the top level `dataset` for a dataset source, or in the `acceleration` section for a data store.
 
-The DuckDB data connector supports specifying an [`invalid_type_action` dataset parameter](../../reference/spicepod/datasets.md#invalid_type_action), modifying the behavior of the Runtime when a data type the connector does not support is encountered.
+## Examples
+
+### Reading from a relative path
 
 A generic example of DuckDB data connector configuration.
 
@@ -36,7 +76,7 @@ datasets:
       duckdb_open: path/to/duckdb_file.duckdb
 ```
 
-This example uses a DuckDB database file that is at location /my/path/
+### Reading from an absolute path
 
 ```yaml
 datasets:
@@ -46,7 +86,7 @@ datasets:
       duckdb_open: /my/path/my_database.db
 ```
 
-## DuckDB Functions
+### DuckDB Functions
 
 Common [data import](https://duckdb.org/docs/data/overview) DuckDB functions can also define datasets. Instead of a fixed table reference (e.g. `database.schema.table`), a DuckDB function is provided in the `from:` key. For example
 
@@ -72,7 +112,7 @@ is equivalent to:
 
 ```sql
 -- from_function
-SELECT * FROM read_csv('test.csv', header = false)
+SELECT * FROM read_csv('test.csv', header = false);
 ```
 
 Many DuckDB data imports can be rewritten as DuckDB functions, making them usable as Spice datasets. For example:
