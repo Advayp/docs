@@ -32,7 +32,7 @@ Currently supported Data Connectors include:
 | `dremio`                           | Dremio                    | Alpha             | Arrow Flight SQL          | `append`, `full`            | ❌                              | ❌                 |
 | `file`                             | File                      | Alpha             | Parquet, CSV              | `append`, `full`            | Roadmap                         | ✅                 |
 | `ftp`, `sftp`                      | FTP/SFTP                  | Alpha             | Parquet, CSV              | `append`, `full`            | ❌                              | ✅                 |
-| `graphql`                          | GraphQL                   | Alpha             | GraphQL                   | `append`, `full`            | ❌                              | ❌                 |
+| `graphql`                          | GraphQL                   | Release Candidate | GraphQL                   | `append`, `full`            | ❌                              | ❌                 |
 | `http`, `https`                    | HTTP(s)                   | Alpha             | Parquet, CSV              | `append`, `full`            | ❌                              | ❌                 |
 | `localpod`                         | Local dataset replication | Alpha             |                           | `append`, `full`            | ❌                              | ✅                 |
 | `sharepoint`                       | SharePoint                | Alpha             |                           | `append`, `full`            | ❌                              | ✅                 |
