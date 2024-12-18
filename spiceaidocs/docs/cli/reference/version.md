@@ -5,7 +5,7 @@ pagination_prev: null
 pagination_next: null
 ---
 
-Returns the current version of the Spice CLI.
+Returns the current version of the Spice CLI and runtime.
 
 ### Usage
 
@@ -27,4 +27,16 @@ spice version
 
 ```shell
 spice version --short
+```
+
+### Sample Output
+
+**New Version Available:**
+
+```
+2024/12/17 22:42:11 INFO CLI version:     v0.18.3-beta
+2024/12/17 22:42:13 INFO Runtime version: v0.20.0-beta+models
+2024/12/17 22:42:14 INFO
+CLI version v1.0.0-rc.2 is now available!
+To upgrade, run "spice upgrade".
 ```
