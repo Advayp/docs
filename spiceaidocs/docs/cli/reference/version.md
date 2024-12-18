@@ -5,7 +5,7 @@ pagination_prev: null
 pagination_next: null
 ---
 
-Returns the current version of the Spice CLI and runtime.
+Outputs the current version of the Spice CLI and runtime.
 
 ### Usage
 
