@@ -4,17 +4,18 @@ sidebar_label: "version"
 pagination_prev: null
 pagination_next: null
 ---
-Spice CLI version
+
+Returns the current version of the Spice CLI.
 
 ### Usage
 
-```shell 
+```shell
 spice version [flags]
 ```
 
 #### Flags
 
-- `-h`, `--help`   help for version
+- `-h`, `--help` help for version
 
 ### Examples
 
