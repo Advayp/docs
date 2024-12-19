@@ -26,7 +26,7 @@ Available `command`s:
 #### Output from Configure
 
 ```bash
-2024/12/18 01:06:32 INFO dataset name: spice-ai-assessment
+2024/12/18 01:06:32 INFO dataset name: sample-project
 remote-source # Input 1: Name of dataset
 2024/12/18 01:06:59 WARN Dataset names with hyphens should be quoted in queries:
 i.e. SELECT * FROM "remote-source"
