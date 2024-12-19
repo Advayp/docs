@@ -1,33 +1,35 @@
 ---
-title: 'Manifest syntax for Spicepods'
+title: "Manifest syntax for Spicepods"
 sidebar_position: 1
-sidebar_label: 'Spicepod specification'
-description: 'Detailed documentation on the Spicepod manifest syntax (spicepod.yaml)'
+sidebar_label: "Spicepod specification"
+description: "Detailed documentation on the Spicepod manifest syntax (spicepod.yaml)"
 ---
 
-## About YAML syntax for Spicepod manifests (spicepod.yaml)
+# About YAML syntax for Spicepod manifests (spicepod.yaml)
 
 Spicepod manifests use YAML syntax and must be named `spicepod.yaml` or `spicepod.yml`. If you are new to YAML and want to learn more, see "[Learn YAML in Y minutes](https://learnxinyminutes.com/docs/yaml/)."
 
 Spicepod manifest files are stored in the root directory of your application code.
 
-## `version`
+# Syntax
+
+## version
 
 The version of the Spicepod manifest. The current version is `v1beta1`.
 
-## `kind`
+## kind
 
-The kind of Spicepod manifest. The kind is `Spicepod`.
+The specific kind of Spicepod manifest, which, for now, is always `Spicepod`.
 
-## `name`
+## name
 
 The name of the Spicepod.
 
-## `secrets`
+## secrets
 
 The secrets section in the Spicepod manifest is optional and is used to configure how secrets are stored and accessed by the Spicepod. For more information, see [Secret Stores](/components/secret-stores).
 
-### `secrets.from`
+### secrets.from
 
 The `from` field is a string that represents the Uniform Resource Identifier (URI) for the secret store. This URI is composed of two parts: a prefix indicating the Secret Store to use, and an optional selector that specifies the secret to retrieve.
 
@@ -39,40 +41,35 @@ from: <secret_store>:<selector>
 
 Where:
 
-- `<secret_store>`: The Secret Store to use
+- `<secret_store>`: The Secret Store to use. Currently, Spice supports [`env`](/components/secret-stores/env/index.md), [`kubernetes`](/components/secret-stores/kubernetes/index.md), [`keyring`](/components/secret-stores/keyring/index.md), [`aws-secrets-manager`](/components/secret-stores/aws-secrets-manager/index.md). The default value is [`env`](/components/secret-stores/env/index.md).
+- `<selector>`: The identifier of the secret within the store to load.
 
-  Currently supported secret stores:
-
-  - [`env`](/components/secret-stores/env/index.md)
-  - [`kubernetes`](/components/secret-stores/kubernetes/index.md)
-  - [`keyring`](/components/secret-stores/keyring/index.md)
-  - [`aws-secrets-manager`](/components/secret-stores/aws-secrets-manager/index.md)
-
-  If no secret stores are explicitly specified, it defaults to `env`.
-
-- `<selector>`: The secret within the secret store to load.
-
-The type of secret store for reading secrets.
-
-Example
+#### Example
 
 ```yaml
 secrets:
   - from: env
-    name: env
 ```
 
-### `secrets.name`
+### secrets.name
 
 The name of the secret store. This is used to reference the store in the secret replacement syntax, `${<secret_store_name>:<key_name>}`.
 
-## `runtime`
+#### Example
 
-### `runtime.num_of_parallel_loading_at_start_up`
+```yaml
+secrets:
+  - from: env
+  - name: local-environment
+```
+
+## runtime
+
+### runtime.num_of_parallel_loading_at_start_up
 
 This configuration setting determines the maximum number of datasets that can be loaded in parallel during startup. This parallel loading capability accelerates Spice's startup process when multiple datasets are configured.
 
-### `runtime.results_cache`
+### runtime.results_cache
 
 The results cache section specifies runtime cache configuration. [Learn more](/features/caching).
 
@@ -85,93 +82,58 @@ runtime:
     item_ttl: 1s
 ```
 
-- `enabled` - optional, `true` by default
-- `cache_max_size` - optional, maximum cache size. Default is `128MiB`
-- `eviction_policy` - optional, cache replacement policy when the cached data reaches the `cache_max_size`. Default is `lru` - [least-recently-used (LRU)](https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU)
-- `item_ttl` - optional, cache entry expiration time, 1 second by default.
+| Name              | Constraint | Description                                               | Default                                                                                                          |
+| ----------------- | ---------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `enabled`         | Optional   | Enable the results cache                                  | `true`                                                                                                           |
+| `cache_max_size`  | Optional   | The maximum capacity of the cache.                        | `128MiB`                                                                                                         |
+| `eviction_policy` | Optional   | The replacement policy of the cache when it's at capacity | [`lru`](https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU) (only supported eviction policy as of now) |
+| `item_ttl`        | Optional   | Cache entry expiration time                               | `1s`                                                                                                             |
 
-### `runtime.tls`
+### runtime.tls
 
 The TLS section specifies the configuration for enabling Transport Layer Security (TLS) for all endpoints exposed by the runtime. [Learn more about enabling TLS](/api/tls).
 
 In addition to configuring TLS via the manifest, TLS can also be configured via `spiced` command line arguments using with `--tls-enabled true` and `--tls-certificate`/`--tls-certificate-file` and `--tls-key`/`--tls-key-file` flags.
 
-#### `runtime.tls.enabled`
+#### Additional Components of `runtime.tls`
 
-Enables or disables TLS for the runtime endpoints.
+| Field Name                     | Description                                                                                                             |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `runtime.tls.enabled`          | Enables or disables TLS for the runtime endpoints                                                                       |
+| `runtime.tls.certificate`      | The TLS certificate to use for securing the runtime endpoints. Can also come from [secrets](/components/secret-stores). |
+| `runtime.tls.certificate_file` | The path to the TLS PEM-encoded certificate file. Only one of `certificate` and `certificate_file` can be used          |
+| `runtime.tls.key`              | The TLS key to use for secruing the runtime endpoints. Can also come from [secrets](/components/secret-stores)          |
+| `runtime.tls.key_file`         | Path to the TLS PEM-encoded key file. Only one of `key` or `key_file` can be used.                                      |
+
+#### Example
+
+**With `certificate` and `key`**:
 
 ```yaml
 runtime:
   tls:
-    ...
-    enabled: true # or false
-```
-
-#### `runtime.tls.certificate`
-
-The TLS certificate to use for securing the runtime endpoints. The certificate can also come from [secrets](/components/secret-stores).
-
-```yaml
-runtime:
-  tls:
-    ...
+    enabled: true
     certificate: |
       -----BEGIN CERTIFICATE-----
       ...
       -----END CERTIFICATE-----
-```
-
-```yaml
-runtime:
-  tls:
-    ...
-    certificate: ${secrets:tls_cert}
-```
-
-#### `runtime.tls.certificate_file`
-
-The path to the TLS PEM-encoded certificate file. Only one of `certificate` or `certificate_file` must be used.
-
-```yaml
-runtime:
-  tls:
-    ...
-    certificate_file: /path/to/cert.pem
-```
-
-#### `runtime.tls.key`
-
-The TLS key to use for securing the runtime endpoints. The key can also come from [secrets](/components/secret-stores).
-
-```yaml
-runtime:
-  tls:
-    ...
     key: |
       -----BEGIN PRIVATE KEY-----
       ...
       -----END PRIVATE KEY-----
 ```
 
-```yaml
-runtime:
-  tls:
-    ...
-    key: ${secrets:tls_key}
-```
-
-#### `runtime.tls.key_file`
-
-The path to the TLS PEM-encoded key file. Only one of `key` or `key_file` must be used.
+**With `certificate_file` and `key_file`**:
 
 ```yaml
 runtime:
   tls:
-    ...
+    enabled: true
+    certificate_file: /path/to/certificate.pem
     key_file: /path/to/key.pem
 ```
 
-### `runtime.task_history`
+### runtime.task_history
 
 The task history section specifies runtime task history configuration.
 
@@ -184,43 +146,34 @@ runtime:
     retention_check_interval: 15m
 ```
 
-- `enabled` - optional, `true` by default.
-- `captured_output` - optional, what level of output is captured by the task history table. `none` by default. Possible values are `truncated`, or `none`.
-- `retention_period` - optional, how long records in the task history table should be retained. Default is `8h`, or 8 hours.
-- `retention_check_interval` - optional, how often should old records be checked for removal. Default is `15m`, or 15 minutes.
+| Field Name                 | Description                                                          | Constraint | Default                                   |
+| -------------------------- | -------------------------------------------------------------------- | ---------- | ----------------------------------------- |
+| `enabled`                  | Whether or not task history is enabled                               | Optional   | `true`                                    |
+| `captured_output`          | What level of output is captured by the task history table           | Optional   | `none`. Other values include `truncated`. |
+| `retention_period`         | Duration of retention for recrods captured in the task history table | Optional   | `8h`, or 8 hours                          |
+| `retention_check_interval` | Frequency of checking records for removal                            | Optional   | `15m`, or 15 minutes                      |
 
-### `runtime.cors`
+### runtime.cors
 
 The CORS section specifies the configuration for enabling Cross-Origin Resource Sharing (CORS) for the HTTP endpoint. By default, CORS is disabled.
 
-Default configuration:
+| Field Name                    | Description                                    | Default                           |
+| ----------------------------- | ---------------------------------------------- | --------------------------------- |
+| `runtime.cors.enabled`        | Enables or disables CORS for the HTTP endpoint | `false`                           |
+| `runtime.cors.allowed_origins | List of allowed origins for CORS requests      | `["*"]`, which allows all origins |
 
-```yaml
-runtime:
-  cors:
-    enabled: false
-```
-
-### `runtime.cors.enabled`
-
-Enables or disables CORS for the HTTP endpoint. `false` by default.
-
-### `runtime.cors.allowed_origins`
-
-A list of allowed origins for CORS requests. `["*"]` by default, which allows all origins.
-
-Example:
+**Example**:
 
 ```yaml
 runtime:
   cors:
     enabled: true
-    allowed_origins: ['https://example.com']
+    allowed_origins: ["https://example.com"]
 ```
 
 This configuration allows requests from the `https://example.com` origin only.
 
-## `metadata`
+## metadata
 
 An optional `map` of metadata.
 
@@ -235,7 +188,7 @@ metadata:
   episodes: 10
 ```
 
-## `datasets`
+## datasets
 
 A Spicepod can contain one or more [datasets](./datasets.md) referenced by relative path.
 
@@ -260,7 +213,9 @@ datasets:
       refresh_check_interval: 1h
 ```
 
-## `models`
+Learn more about the specific syntax and configuration settings [here](./datasets.md).
+
+## models
 
 A Spicepod can contain one or more [models](./models.md) referenced by relative path.
 
@@ -283,7 +238,9 @@ models:
       - drive_stats_inferencing
 ```
 
-## `embeddings`
+Learn more about the specific syntax and configuration settings [here](./models.md).
+
+## embeddings
 
 A Spicepod can contain one or more [embeddings](./embeddings.md) referenced by relative path.
 
@@ -304,7 +261,9 @@ embeddings:
     from: huggingface:huggingface.co/BAAI/bge-small-en-v1.5
 ```
 
-## `dependencies`
+Learn more about the specific syntax and configuration settings [here](./embeddings.md).
+
+## dependencies
 
 A list of dependent Spicepods.
 
@@ -314,7 +273,7 @@ dependencies:
   - spicehq/nfts
 ```
 
-## `views`
+## views
 
 A Spicepod can contain one or more views which are virtual tables defined by SQL queries.
 
