@@ -5,7 +5,11 @@ pagination_prev: null
 pagination_next: null
 ---
 
-Lists [catalogs](/components/catalogs) loaded by the Spice runtime
+Lists [catalogs](/components/catalogs) currnently loaded by the Spice runtime.
+
+### Requirements
+
+- Spice runtime must be running
 
 ### Usage
 
@@ -15,13 +19,13 @@ spice catalogs [flags]
 
 #### Flags
 
-- `--tls-root-certificate-file`   The path to the root certificate file used to verify the Spice.ai runtime server certificate
+- `--tls-root-certificate-file` The path to the root certificate file used to verify the Spice.ai runtime server certificate
 
 ### Example
 
-```shell 
+```shell
 >>> spice catalogs
 
-FROM    NAME     
-spiceai spiceai 
+FROM    NAME
+spiceai spiceai
 ```

@@ -5,17 +5,23 @@ pagination_prev: null
 pagination_next: null
 ---
 
-Connect to Spice.ai Cloud Platform App
+Connect to an app on Spice's Cloud Platform.
+
+### Requirements
+
+- Authentication to Spice's Cloud Platform via [`login`](/cli/reference/login)
 
 ### Usage
 
 ```shell
-spice connect [flags]
+spice connect [path] [flags]
 ```
+
+- `path`: Path to project.
 
 #### Flags
 
-- `-h`, `--help`   Print this help message
+- `-h`, `--help` Print this help message
 
 ### Examples
 

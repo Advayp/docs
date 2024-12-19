@@ -4,7 +4,12 @@ sidebar_label: "pods"
 pagination_prev: null
 pagination_next: null
 ---
+
 Lists Spicepods loaded by the Spice runtime
+
+### Requirements
+
+- Spice runtime must be currently active
 
 ### Usage
 
@@ -14,12 +19,12 @@ spice pods [flags]
 
 #### Flags
 
-- `--tls-root-certificate-file`   The path to the root certificate file used to verify the Spice.ai runtime server certificate
-- `-h`, `--help`   help for pods
+- `--tls-root-certificate-file` The path to the root certificate file used to verify the Spice.ai runtime server certificate
+- `-h`, `--help` help for pods
 
 ### Examples
 
-```shell 
+```shell
 >>> spice pods
 
 VERSION NAME        DATASETSCOUNT MODELSCOUNT DEPENDENCIESCOUNT

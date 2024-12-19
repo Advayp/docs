@@ -7,24 +7,28 @@ pagination_next: null
 
 Lists models loaded by the Spice runtime
 
+### Requirements
+
+- The Spice runtime must be currently running
+
 ### Usage
 
-```shell 
+```shell
 spice models [flags]
 ```
 
 #### Flags
 
-- `--tls-root-certificate-file`   The path to the root certificate file used to verify the Spice.ai runtime server certificate
-- `-h`, `--help`   help for models
+- `--tls-root-certificate-file` The path to the root certificate file used to verify the Spice.ai runtime server certificate
+- `-h`, `--help` help for models
 
 ### Examples
 
 ```shell
 >>> spice models
 
-NAME  FROM                                    DATASETS STATUS
-modlz file:/Users/jeadie/Downloads/model.onnx []       Ready
+NAME                FROM                  STATUS
+[sample_model_name] [sample_model_source] Ready
 ```
 
 ### Additional Example
@@ -32,6 +36,6 @@ modlz file:/Users/jeadie/Downloads/model.onnx []       Ready
 ```shell
 >>> spice models --tls-root-certificate-file /path/to/cert.pem
 
-NAME  FROM                                    DATASETS STATUS
-modlz file:/Users/jeadie/Downloads/model.onnx []       Ready
+NAME  FROM                                    STATUS
+modlz file:/Users/jeadie/Downloads/model.onnx Ready
 ```
