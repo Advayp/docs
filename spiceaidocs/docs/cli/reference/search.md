@@ -19,22 +19,19 @@ spice search [query] [flags]
 
 #### Flags
 
-- `--cloud` Whether to use cloud instance for search
-  - Default: `false`
-- `--limit` Limit number of search results
-- `--model` Model to use for search
-- `--http-endpoint` HTTP endpoint for search
-  - Default: `http://localhost:8090`
+| Name              | Description                              | Default                 |
+| ----------------- | ---------------------------------------- | ----------------------- |
+| `--cloud`         | Whether to use cloud instance for search | False                   |
+| `--limit`         | Limit number of search results           | N/A                     |
+| `--model`         | Model to use for search                  | N/A                     |
+| `--http-endpoint` | HTTP endpoint for search                 | `http://localhost:8090` |
 
 ### Examples
 
 ```shell
 >>> spice search --limit 2
-```
 
-```shell
 search> artificial intelligence
-
 
 Rank 1, Score: 20.6, Datasets [pdf]
 Undergraduate Texts in Mathematics Editors: F. W. Gehring P. R.
@@ -46,18 +43,16 @@ Theory with Stochastic Processes Springer Science+Business Media, LLC
 ...
 
 Rank 2, Score: 17.8, Datasets [pdf]
-Forecasting at Scale Sean J. Taylor  y Facebook, Menlo Park, California, United States sjt@fb.com and Benjamin Letham y Facebook, Menlo Park, California, United States bletham@fb.com Abstract Forecasting is a common data science...
+Forecasting at Scale Sean J. Taylor  y Facebook, Menlo Park, California, United States sjt@fb.com and Benjamin Letham y Facebook, Menlo Park, California, United States bletham@fb.com Abstract Forecasting is a common data science
+...
 ```
 
 ### Additional Example
 
 ```shell
 >>> spice search --model gpt-3 --limit 1
-```
 
-```shell
 search> machine learning
-
 
 Rank 1, Score: 25.4, Datasets [pdf]
 Machine Learning Yearning by Andrew Ng
