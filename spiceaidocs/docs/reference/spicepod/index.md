@@ -19,7 +19,7 @@ The version of the Spicepod manifest. The current version is `v1beta1`.
 
 ## kind
 
-The specific kind of Spicepod manifest, which, for now, is always `Spicepod`.
+The specific kind of Spicepod manifest. For a Spicepod, this is obviously `Spicepod`.
 
 ## name
 
