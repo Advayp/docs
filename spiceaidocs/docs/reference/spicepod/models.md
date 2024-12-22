@@ -1,7 +1,7 @@
 ---
-title: 'Models'
-sidebar_label: 'Models'
-description: 'Models YAML reference'
+title: "Models"
+sidebar_label: "Models"
+description: "Models YAML reference"
 pagination_next: null
 ---
 
@@ -24,7 +24,7 @@ Spice supports both traditional machine learning (ML) models and language models
 | `files`       | Specify additional files, or override default files needed by the model |
 | `params`      | Additional parameters to be passed to the model                         |
 
-## `models`
+## models
 
 The `models` section in your configuration allows you to specify one or more models to be used with your datasets.
 
@@ -42,12 +42,12 @@ models:
       - path: tokenizer.json
         type: tokenizer
     params:
-      max_length: '128'
+      max_length: "128"
     datasets:
       - my_text_dataset
 ```
 
-### `from`
+### from
 
 The `from` field specifies both the source of the model (e.g Huggingface, or a local file), and the unique identifier of the model (relative to the source). The `from` value expects the following format
 
@@ -74,17 +74,17 @@ The `<model_id>` suffix of the `from` field is a unique (per source) identifier 
   - `Qwen/Qwen1.5-0.5B` (no revision)
   - `meta-llama/Meta-Llama-3-8B:cd892e8f4da1043d4b01d5ea182a2e8412bf658f` (with revision hash)
 - For local files: Represents the absolute or relative path to the model weights file on the local file system. See [below](#files) for the accepted model weight types and formats.
-- For OpenAI: Only supports LMs. For OpenAI models, valid IDs can be found in their model [documentation](https://platform.openai.com/docs/models/continuous-model-upgrades). For OpenAI compatible providers, specify the value required in their `v1/chat/completion` [payload](https://platform.openai.com/docs/api-reference/chat/create#chat-create-model).
+- For OpenAI: Only supports language models. For OpenAI models, valid IDs can be found in their model [documentation](https://platform.openai.com/docs/models/continuous-model-upgrades). For OpenAI compatible providers, specify the value required in their `v1/chat/completion` [payload](https://platform.openai.com/docs/api-reference/chat/create#chat-create-model).
 
-### `name`
+### name
 
-A unique identifier for this model component.
+A unique identifier for this model component. This name can is used to reference this component along with its provided configuration in a Spicepod.
 
-### `description`
+### description
 
-Additional details about the model, useful for displaying to users
+Additional details about the model, useful for displaying to users.
 
-### `files`
+### files
 
 Optional. A list of files associated with this model. Each file has:
 
@@ -116,7 +116,7 @@ File types include:
 
 The system attempts to automatically determine the file type based on the file name and extension. If the type cannot be determined automatically, you can explicitly specify it in the configuration.
 
-### `params`
+### params
 
 Optional. A map of key-value pairs for additional parameters specific to the model.
 
@@ -125,10 +125,10 @@ Example uses include:
 - Setting default OpenAI request parameters for language models, see [parameter overrides](/features/large-language-models/parameter_overrides.md).
 - Allowing Language models to perform actions against spice (e.g. making SQL queries), via language model tool use, see [runtime tools](/features/large-language-models/runtime_tools.md).
 
-### `datasets`
+### datasets
 
 Optional. A list of [dataset names](./datasets.md#name) that this model should be applied to. For ML models, this preselects the dataset to use for inference.
 
-### `dependsOn`
+### dependsOn
 
 Optional. A list of dependencies that must be loaded and available before this model.
