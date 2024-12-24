@@ -1,7 +1,7 @@
 ---
-title: "Catalogs"
-sidebar_label: "Catalogs"
-description: "Datasets YAML reference"
+title: 'Catalogs'
+sidebar_label: 'Catalogs'
+description: 'Datasets YAML reference'
 ---
 
 A Spicepod can contain one or more catalogs.
@@ -15,7 +15,7 @@ catalogs:
   - from: spice.ai
     name: spiceai
     include:
-      - "tpch.*" # Include only the "tpch" tables.
+      - 'tpch.*' # Include only the "tpch" tables.
 ```
 
 ## from

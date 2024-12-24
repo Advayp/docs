@@ -1,35 +1,36 @@
 ---
-title: "run"
-sidebar_label: "run"
+title: 'run'
+sidebar_label: 'run'
 pagination_prev: null
 pagination_next: null
 ---
+
 Run Spice - starts the Spice runtime, installing if necessary
 
 ### Usage
 
-```shell 
+```shell
 spice run [flags]
 spice run [flags] -- [spiced flags]
 ```
 
 #### Flags
 
-- `-h`, `--help`   Print this help message
+- `-h`, `--help` Print this help message
 
 #### Spiced Flags
 
 Flags that are passed to the `spiced` runtime directly.
 
-- `--http`  Configure runtime HTTP address [default: 127.0.0.1:8090]
+- `--http` Configure runtime HTTP address [default: 127.0.0.1:8090]
 - `--flight` Configure runtime Flight address [default: 127.0.0.1:50051]
 - `--open_telemetry` Configure runtime OpenTelemetry address [default: 127.0.0.1:50052]
-- `--tls-enabled`  Enable TLS
-- `--tls-certificate`   The TLS PEM-encoded certificate
-- `--tls-certificate-file`  Path to the TLS PEM-encoded certificate file
-- `--tls-key`   The TLS PEM-encoded key
-- `--tls-key-file`   Path to the TLS PEM-encoded key file
-- `--set-runtime`   Override [runtime configuration](/reference/spicepod/index.md#runtime) with a name/value pair specified as `name=value`. Multiple overrides can be specified by using the flag multiple times.
+- `--tls-enabled` Enable TLS
+- `--tls-certificate` The TLS PEM-encoded certificate
+- `--tls-certificate-file` Path to the TLS PEM-encoded certificate file
+- `--tls-key` The TLS PEM-encoded key
+- `--tls-key-file` Path to the TLS PEM-encoded key file
+- `--set-runtime` Override [runtime configuration](/reference/spicepod/index.md#runtime) with a name/value pair specified as `name=value`. Multiple overrides can be specified by using the flag multiple times.
 
 ### Examples
 

@@ -1,6 +1,6 @@
 ---
-title: "add"
-sidebar_label: "add"
+title: 'add'
+sidebar_label: 'add'
 pagination_prev: null
 pagination_next: null
 ---
@@ -15,7 +15,7 @@ spice add [flags]
 
 #### Flags
 
-- `-h`, `--help`   Print this help message
+- `-h`, `--help` Print this help message
 
 ### Examples
 

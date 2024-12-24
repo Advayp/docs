@@ -1,6 +1,6 @@
 ---
-title: "Completion"
-sidebar_label: "completion"
+title: 'Completion'
+sidebar_label: 'completion'
 pagination_prev: null
 pagination_next: null
 ---
@@ -23,5 +23,4 @@ Available `command`s
 
 #### Flags
 
-- `-h`, `--help`   Print this help message
-  
+- `-h`, `--help` Print this help message

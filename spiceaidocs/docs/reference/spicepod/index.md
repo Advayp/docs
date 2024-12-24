@@ -1,8 +1,8 @@
 ---
-title: "Manifest syntax for Spicepods"
+title: 'Manifest syntax for Spicepods'
 sidebar_position: 1
-sidebar_label: "Spicepod specification"
-description: "Detailed documentation on the Spicepod manifest syntax (spicepod.yaml)"
+sidebar_label: 'Spicepod specification'
+description: 'Detailed documentation on the Spicepod manifest syntax (spicepod.yaml)'
 ---
 
 # About YAML syntax for Spicepod manifests (spicepod.yaml)
@@ -168,7 +168,7 @@ The CORS section specifies the configuration for enabling Cross-Origin Resource 
 runtime:
   cors:
     enabled: true
-    allowed_origins: ["https://example.com"]
+    allowed_origins: ['https://example.com']
 ```
 
 This configuration allows requests from the `https://example.com` origin only.

@@ -1,6 +1,6 @@
 ---
-title: "connect"
-sidebar_label: "connect"
+title: 'connect'
+sidebar_label: 'connect'
 pagination_prev: null
 pagination_next: null
 ---
@@ -15,7 +15,7 @@ spice connect [flags]
 
 #### Flags
 
-- `-h`, `--help`   Print this help message
+- `-h`, `--help` Print this help message
 
 ### Examples
 

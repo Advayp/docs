@@ -1,9 +1,10 @@
 ---
-title: "status"
-sidebar_label: "status"
+title: 'status'
+sidebar_label: 'status'
 pagination_prev: null
 pagination_next: null
 ---
+
 Spice runtime status
 
 ### Usage
@@ -14,12 +15,12 @@ spice status [flags]
 
 #### Flags
 
-- `--tls-root-certificate-file`   The path to the root certificate file used to verify the Spice.ai runtime server certificate
-- `-h`, `--help`   help for status
+- `--tls-root-certificate-file` The path to the root certificate file used to verify the Spice.ai runtime server certificate
+- `-h`, `--help` help for status
 
 ### Examples
 
-```shell 
+```shell
 >>> spice status
 
 NAME          ENDPOINT        STATUS

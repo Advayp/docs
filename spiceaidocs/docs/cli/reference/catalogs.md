@@ -1,6 +1,6 @@
 ---
-title: "catalogs"
-sidebar_label: "catalogs"
+title: 'catalogs'
+sidebar_label: 'catalogs'
 pagination_prev: null
 pagination_next: null
 ---
@@ -15,13 +15,13 @@ spice catalogs [flags]
 
 #### Flags
 
-- `--tls-root-certificate-file`   The path to the root certificate file used to verify the Spice.ai runtime server certificate
+- `--tls-root-certificate-file` The path to the root certificate file used to verify the Spice.ai runtime server certificate
 
 ### Example
 
-```shell 
+```shell
 >>> spice catalogs
 
-FROM    NAME     
-spiceai spiceai 
+FROM    NAME
+spiceai spiceai
 ```

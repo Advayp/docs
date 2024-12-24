@@ -1,7 +1,7 @@
 ---
-title: "Datasets"
-sidebar_label: "Datasets"
-description: "Datasets YAML reference"
+title: 'Datasets'
+sidebar_label: 'Datasets'
+description: 'Datasets YAML reference'
 ---
 
 A Spicepod can contain one or more `datasets` referenced by relative path or defined inline.
@@ -334,7 +334,7 @@ datasets:
       engine: sqlite
       indexes:
         number: enabled # Index the `number` column
-        "(hash, timestamp)": unique # Add a unique index with a multicolumn key comprised of the `hash` and `timestamp` columns
+        '(hash, timestamp)': unique # Add a unique index with a multicolumn key comprised of the `hash` and `timestamp` columns
 ```
 
 ## acceleration.primary_key
@@ -381,7 +381,7 @@ datasets:
       engine: sqlite
       primary_key: hash
       indexes:
-        "(number, timestamp)": unique
+        '(number, timestamp)': unique
       on_conflict:
         # Upsert the incoming data when the primary key constraint on "hash" is violated,
         # alternatively "drop" can be used instead of "upsert" to drop the data update.

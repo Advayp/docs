@@ -1,7 +1,7 @@
 ---
-title: "Models"
-sidebar_label: "Models"
-description: "Models YAML reference"
+title: 'Models'
+sidebar_label: 'Models'
+description: 'Models YAML reference'
 pagination_next: null
 ---
 
@@ -42,7 +42,7 @@ models:
       - path: tokenizer.json
         type: tokenizer
     params:
-      max_length: "128"
+      max_length: '128'
     datasets:
       - my_text_dataset
 ```

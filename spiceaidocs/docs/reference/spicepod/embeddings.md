@@ -1,7 +1,7 @@
 ---
-title: "Embeddings"
-sidebar_label: "Embeddings"
-description: "Embeddings YAML reference"
+title: 'Embeddings'
+sidebar_label: 'Embeddings'
+description: 'Embeddings YAML reference'
 ---
 
 Embeddings convert text or other data into vector representations for machine learning and natural language processing tasks.
@@ -17,7 +17,7 @@ embeddings:
   - from: huggingface:huggingface.co/sentence-transformers/all-MiniLM-L6-v2:latest
     name: text_embedder
     params:
-      max_length: "128"
+      max_length: '128'
     datasets:
       - my_text_dataset
 ```
