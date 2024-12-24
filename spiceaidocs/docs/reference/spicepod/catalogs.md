@@ -18,7 +18,7 @@ catalogs:
       - 'tpch.*' # Include only the "tpch" tables.
 ```
 
-## from
+## `from`
 
 The `from` field is a string that represents the Uniform Resource Identifier (URI) for the catalog provider. This URI is composed of two parts: a prefix indicating the Catalog Connector to use, and the catalog path within the source.
 
@@ -38,7 +38,7 @@ from: <catalog_connector>:<path>
 
 - `<path>`: The path to the catalog within the provider.
 
-## ref
+## `ref`
 
 An alternative to adding the catalog definition inline in the `spicepod.yaml` file. `ref` can be use to point to a directory with a catalog defined in a `catalog.yaml` file. For example, a catalog configured in a catalog.yaml in the "catalogs/sample" directory can be referenced with the following:
 
@@ -52,18 +52,18 @@ catalogs:
   - ref: catalogs/sample
 ```
 
-## name
+## `name`
 
 The name of the catalog to register in Spice. The schema hierarchy of the external catalog is preserved in Spice. It doesn't need to match the name of the catalog in the external provider.
 
-## include
+## `include`
 
 Optional. The `include` field is used to specify which tables to include from the catalog. The `include` field supports glob patterns to match multiple tables. For example, `*.my_table_name` would include all tables with the name `my_table_name` in the catalog from any schema. Multiple `include` patterns are OR'ed together and can be specified to include multiple tables.
 
-## params
+## `params`
 
 Optional. Parameters to pass to the catalog connector for retrieving the metadata on the schemas and tables to be included. The parameters are specific to the connector used.
 
-## dataset_params
+## `dataset_params`
 
 Optional. Parameters used when constructing the individual datasets that are registered in Spice from the catalog. The parameters are specific to the connector used.

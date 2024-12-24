@@ -66,7 +66,7 @@ acceleration:
   refresh: 1h
 ```
 
-## from
+## `from`
 
 The `from` field is a string that represents the Uniform Resource Identifier (URI) for the dataset. This URI is composed of two parts: a prefix indicating the Data Connector to use to connect to the dataset, a delimiter, and the path to the dataset within the source.
 
@@ -106,7 +106,7 @@ Where:
 
 - `<path>`: The path to the dataset within the source.
 
-## ref
+## `ref`
 
 An alternative to adding the dataset definition inline in the `spicepod.yaml` file. `ref` can be use to point to a directory with a dataset defined in a `dataset.yaml` file. For example, a dataset configured in a dataset.yaml in the "datasets/sample" directory can be referenced with the following:
 
@@ -131,21 +131,21 @@ datasets:
   - ref: datasets/sample
 ```
 
-## name
+## `name`
 
 The name of the dataset. Used to reference the dataset in the pod manifest, as well as in external data sources.
 
-## description
+## `description`
 
 The description of the dataset. Used as part of the [Semantic Data Model](/features/semantic-model/index.md).
 
-## time_column
+## `time_column`
 
 Optional. The name of the column that represents the temporal (time) ordering of the dataset.
 
 Required to enable a retention policy on the dataset.
 
-## time_format
+## `time_format`
 
 Optional. The format of the `time_column`. The following values are supported:
 
@@ -163,7 +163,7 @@ Spice emits a warning if the `time_column` from the data source is incompatible 
 
 :::
 
-## invalid_type_action
+## `invalid_type_action`
 
 Optional. Specifies the action to take when a data type that is not supported by the data connector is encountered.
 
@@ -182,7 +182,7 @@ Not all connectors support specifying an `invalid_type_action`. When specified o
 
 :::
 
-## ready_state
+## `ready_state`
 
 Supports one of two values:
 
@@ -199,15 +199,15 @@ datasets:
       enabled: true
 ```
 
-## acceleration
+## `acceleration`
 
 Optional. Accelerate queries to the dataset by caching data locally.
 
-## acceleration.enabled
+## `acceleration.enabled`
 
 Enable or disable acceleration, defaults to `true`.
 
-## acceleration.engine
+## `acceleration.engine`
 
 The acceleration engine to use, defaults to `arrow`. The following engines are supported:
 
@@ -216,7 +216,7 @@ The acceleration engine to use, defaults to `arrow`. The following engines are s
 - [`postgres`](/components/data-accelerators/postgres/index.md) - Accelerated by a Postgres database.
 - [`sqlite`](/components/data-accelerators/duckdb.md) - Accelerated by an embedded Sqlite database.
 
-## acceleration.mode
+## `acceleration.mode`
 
 Optional. The mode of acceleration. The following values are supported:
 
@@ -225,20 +225,20 @@ Optional. The mode of acceleration. The following values are supported:
 
 `mode` is currently only supported for the `duckdb` engine.
 
-## acceleration.refresh_mode
+## `acceleration.refresh_mode`
 
 Optional. How to refresh the dataset. The following values are supported:
 
 - `full` - Refresh the entire dataset.
 - `append` - Append new data to the dataset. When `time_column` is specified, new records are fetched from the latest timestamp in the accelerated data at the `acceleration.refresh_check_interval`.
 
-## acceleration.refresh_check_interval
+## `acceleration.refresh_check_interval`
 
 Optional. How often data should be refreshed. For `append` datasets without a specific `time_column`, this config is not used. If not defined, the accelerator will not refresh after it initially loads data.
 
 See [Duration](../duration/index.md)
 
-## acceleration.refresh_sql
+## `acceleration.refresh_sql`
 
 Optional. Filters the data fetched from the source to be stored in the accelerator engine. Only supported for `full` refresh_mode datasets.
 
@@ -251,7 +251,7 @@ Must be of the form `SELECT * FROM {name} WHERE {refresh_filter}`. `{name}` is t
 
 :::
 
-## acceleration.refresh_data_window
+## `acceleration.refresh_data_window`
 
 Optional. A duration to filter dataset refresh source queries to recent data (duration into past from now). Requires `time_column` and `time_format` to also be configured. Only supported for `full` refresh mode datasets.
 
@@ -259,7 +259,7 @@ For example, `refresh_data_window: 24h` will include only records with a timesta
 
 See [Duration](../duration/index.md)
 
-## acceleration.refresh_append_overlap
+## `acceleration.refresh_append_overlap`
 
 Optional. A duration to specify how far back to include records based on the most recent timestamp found in the accelerated data. Requires `time_column` to also be configured. Only supported for `append` refresh mode datasets.
 
@@ -269,29 +269,29 @@ Example: If the latest timestamp in the accelerated data table is `2020-01-01T02
 
 See [Duration](../duration/index.md)
 
-## acceleration.refresh_retry_enabled
+## `acceleration.refresh_retry_enabled`
 
 Optional. Specifies whether an accelerated dataset should retry data refresh in the event of transient errors. The default setting is true.
 
 Retries utilize a [Fibonacci backoff strategy](https://en.wikipedia.org/wiki/Fibonacci_sequence). To disable refresh retries, set `refresh_retry_enabled: false`.
 
-## acceleration.refresh_retry_max_attempts
+## `acceleration.refresh_retry_max_attempts`
 
 Optional. Defines the maximum number of retry attempts when refresh retries are enabled. The default is undefined, allowing for unlimited attempts.
 
-## acceleration.params
+## `acceleration.params`
 
 Optional. Parameters to pass to the acceleration engine. The parameters are specific to the acceleration engine used.
 
-## acceleration.engine_secret
+## `acceleration.engine_secret`
 
 Optional. The secret store key to use the acceleration engine connection credential. For supported data connectors, use `spice login` to store the secret.
 
-## acceleration.retention_check_enabled
+## `acceleration.retention_check_enabled`
 
 Optional. Enable or disable retention policy check, defaults to `false`.
 
-## acceleration.retention_period
+## `acceleration.retention_period`
 
 Optional. The retention period for the dataset. Combine with `time_column` and `time_format` to determine if the data should be retained or not.
 
@@ -299,7 +299,7 @@ Required when `acceleration.retention_check_enabled` is `true`.
 
 See [Duration](../duration/index.md)
 
-## acceleration.retention_check_interval
+## `acceleration.retention_check_interval`
 
 Optional. How often the retention policy should be checked.
 
@@ -307,15 +307,15 @@ Required when `acceleration.retention_check_enabled` is `true`.
 
 See [Duration](../duration/index.md)
 
-## acceleration.refresh_jitter_enabled
+## `acceleration.refresh_jitter_enabled`
 
 Optional. Enable or disable refresh jitter, defaults to `false`. The refresh jitter adds/substracts a randomized time period from the `refresh_check_interval`.
 
-## acceleration.refresh_jitter_max
+## `acceleration.refresh_jitter_max`
 
 Optional. The maximum amount of jitter to add to the refresh interval. The jitter is a random value between 0 and `refresh_jitter_max`. Defaults to 10% of `refresh_check_interval`.
 
-## acceleration.indexes
+## `acceleration.indexes`
 
 Optional. Specify which indexes should be applied to the locally accelerated table. Not supported for in-memory Arrow acceleration engine.
 
@@ -337,7 +337,7 @@ datasets:
         '(hash, timestamp)': unique # Add a unique index with a multicolumn key comprised of the `hash` and `timestamp` columns
 ```
 
-## acceleration.primary_key
+## `acceleration.primary_key`
 
 Optional. Specify the primary key constraint on the locally accelerated table. Not supported for in-memory Arrow acceleration engine.
 
@@ -355,7 +355,7 @@ datasets:
       primary_key: hash # Define a primary key on the `hash` column
 ```
 
-## acceleration.on_conflict
+## `acceleration.on_conflict`
 
 Optional. Specify what should happen when a constraint is violated. Not supported for in-memory Arrow acceleration engine.
 
@@ -388,7 +388,7 @@ datasets:
         hash: upsert
 ```
 
-## columns
+## `columns`
 
 Optional. Define metadata and features for specific columns in the dataset.
 
@@ -408,29 +408,29 @@ datasets:
               overlap_size: 32
 ```
 
-## columns[*].name
+## `columns[*].name`
 
 The name of the column in the table schema.
 
-## columns[*].description
+## `columns[*].description`
 
 Optional. A description of the column's contents and purpose. Used as part of the [Semantic Data Model](/features/semantic-model/index.md).
 
-## columns[*].embeddings
+## `columns[*].embeddings`
 
 Optional. Create vector embeddings for this column.
 
-## columns[*].embeddings[*].from
+## `columns[*].embeddings[*].from`
 
 The embedding model to use, specify the component name.
 
-## `olumns[*].embeddings[*].row_id
+## `columns[*].embeddings[*].row_id`
 
 Optional. For datasets without a primary key, used to explicitly specify column(s) that uniquely identify a row.
 
 Specifying a `row_id` enables unique identifier lookups for datasets from external systems that may not have a primary key.
 
-## columns[*].embeddings[*].chunking
+## `columns[*].embeddings[*].chunking`
 
 Optional. The configuration to enable and define the chunking strategy for the embedding column.
 
@@ -448,7 +448,7 @@ columns:
 
 See [`embeddings[*].chunking`](#embeddingschunking) for details.
 
-## embeddings
+## `embeddings`
 
 Optional. Create vector embeddings for specific columns of the dataset.
 
@@ -461,19 +461,19 @@ datasets:
         use: hf_minilm
 ```
 
-## embeddings[*].column
+## `embeddings[*].column`
 
 The column name to create an embedding for.
 
-## embeddings[*].use
+## `embeddings[*].use`
 
 The embedding model to use, specific the component name `embeddings[*].name`.
 
-## embeddings[*].column_pk
+## `embeddings[*].column_pk`
 
 Optional. For datasets without a primary key, explicitly specify column(s) that uniquely identify a row.
 
-## embeddings[*].chunking
+## `embeddings[*].chunking`
 
 Optional. The configuration to enable and define the chunking strategy for the embedding column.
 
@@ -491,25 +491,25 @@ datasets:
           trim_whitespace: false
 ```
 
-## embeddings[*].chunking.enabled
+## `embeddings[*].chunking.enabled`
 
 Optional. Enable or disable chunking for the embedding column. Defaults to `false`.
 
-## embeddings[*].chunking.target_chunk_size
+## `embeddings[*].chunking.target_chunk_size`
 
 The desired size of each chunk, in tokens.
 
 If the desired chunk size is larger than the maximum size of the embedding model, the maximum size will be used.
 
-## embeddings[*].chunking.overlap_size
+## `embeddings[*].chunking.overlap_size`
 
 Optional. The number of tokens to overlap between chunks. Defaults to `0`.
 
-## embeddings[*].chunking.trim_whitespace
+## `embeddings[*].chunking.trim_whitespace`
 
 Optional. If enabled, the content of each chunk will be trimmed to remove leading and trailing whitespace. Defaults to `true`.
 
-## metadata
+## `metadata`
 
 Optional. Additional key-value metadata for the dataset. Used as part of the [Semantic Data Model](/features/semantic-model/index.md).
 

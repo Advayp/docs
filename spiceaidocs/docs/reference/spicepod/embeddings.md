@@ -22,7 +22,7 @@ embeddings:
       - my_text_dataset
 ```
 
-### from
+### `from`
 
 This field specifies the source of your embedding model, whether it's local or remotely accessed. Spice currently supports the following platforms:
 
@@ -55,11 +55,11 @@ embeddings:
 
 This field follows the same convention as [`models.from`](./models.md#from).
 
-### name
+### `name`
 
 A unique identifier for this embedding component. This is used when referring to this particular model at other places in your Spicepod.
 
-### files
+### `files`
 
 Optional. A list of files associated with this model. Each file has:
 
@@ -69,7 +69,7 @@ Optional. A list of files associated with this model. Each file has:
 
 Follows the same convention as [`models.files`](./models.md#files).
 
-### params
+### `params`
 
 Optional. A map of key-value pairs for additional parameters specific to the embedding model.
 
@@ -77,6 +77,6 @@ Optional. A map of key-value pairs for additional parameters specific to the emb
 
 - If using OpenAI as the provider for your embedding model, `params` must contain your OpenAI private key.
 
-### dependsOn
+### `dependsOn`
 
 Optional. A list of dependencies that must be loaded and available before this embedding model.
