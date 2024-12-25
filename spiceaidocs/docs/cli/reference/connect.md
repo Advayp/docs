@@ -9,7 +9,7 @@ Connect to an app on the Spice.ai Cloud Platform.
 
 ### Requirements
 
-- Authentication to the Spice.ai Cloud Platform via [`login`](/cli/reference/login)
+- Authenticated to the Spice.ai Cloud Platform via [`login`](/cli/reference/login)
 
 ### Usage
 
