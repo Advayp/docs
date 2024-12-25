@@ -1,6 +1,6 @@
 ---
-title: "models"
-sidebar_label: "models"
+title: 'models'
+sidebar_label: 'models'
 pagination_prev: null
 pagination_next: null
 ---
@@ -27,8 +27,8 @@ spice models [flags]
 ```shell
 >>> spice models
 
-NAME                FROM                  STATUS
-[sample_model_name] [sample_model_source] Ready
+NAME  FROM                                    DATASETS STATUS
+modlz file:/Users/jeadie/Downloads/model.onnx []       Ready
 ```
 
 ### Additional Example

@@ -1,19 +1,19 @@
 ---
-title: "add"
-sidebar_label: "add"
+title: 'add'
+sidebar_label: 'add'
 pagination_prev: null
 pagination_next: null
 ---
 
-Adds a Spicepod to the project from a given source.
+Adds a Spicepod to the project from a given package.
 
 ### Usage
 
 ```shell
-spice add [source] [flags]
+spice add [package] [flags]
 ```
 
-- `source`: Location of the Spicepod.
+- `package`: The package to add (i.e., `spiceai/quickstart`)
 
 #### Flags
 
@@ -21,7 +21,7 @@ spice add [source] [flags]
 
 ### Examples
 
-Adding a Spicepod from a source currently using Spice (like `spiceai/quickstart`):
+Adding a Spicepod from a Spicerack using Spice (like `spiceai/quickstart`):
 
 ```shell
 spice add spiceai/quickstart

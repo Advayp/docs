@@ -1,6 +1,6 @@
 ---
-title: "pods"
-sidebar_label: "pods"
+title: 'pods'
+sidebar_label: 'pods'
 pagination_prev: null
 pagination_next: null
 ---

@@ -1,11 +1,11 @@
 ---
-title: "status"
-sidebar_label: "status"
+title: 'status'
+sidebar_label: 'status'
 pagination_prev: null
 pagination_next: null
 ---
 
-Status of Spice's runtime
+Spice runtime status
 
 ### Usage
 

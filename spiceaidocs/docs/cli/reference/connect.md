@@ -1,23 +1,23 @@
 ---
-title: "connect"
-sidebar_label: "connect"
+title: 'connect'
+sidebar_label: 'connect'
 pagination_prev: null
 pagination_next: null
 ---
 
-Connect to an app on Spice's Cloud Platform.
+Connect to an app on the Spice.ai Cloud Platform.
 
 ### Requirements
 
-- Authentication to Spice's Cloud Platform via [`login`](/cli/reference/login)
+- Authentication to the Spice.ai Cloud Platform via [`login`](/cli/reference/login)
 
 ### Usage
 
 ```shell
-spice connect [path] [flags]
+spice connect [app] [flags]
 ```
 
-- `path`: Path to project.
+- `app`: The app slug in the Spice.ai Cloud Platform (i.e. `spiceai/tpch`).
 
 #### Flags
 

@@ -1,6 +1,6 @@
 ---
-title: "refresh"
-sidebar_label: "refresh"
+title: 'refresh'
+sidebar_label: 'refresh'
 pagination_prev: null
 pagination_next: null
 ---

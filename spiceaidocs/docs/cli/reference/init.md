@@ -1,11 +1,11 @@
 ---
-title: "init"
-sidebar_label: "init"
+title: 'init'
+sidebar_label: 'init'
 pagination_prev: null
 pagination_next: null
 ---
 
-Initialize a Spicepod in the current working directory.
+Initialize a new Spice app in the current working directory.
 
 ### Usage
 
@@ -27,7 +27,7 @@ spice init [app_name] [flags]
 spice init
 ```
 
-If called without `app_name`, Spice will prompt you for a name and create the appropriate Spicepod in the current working directory.
+If called without `app_name`, Spice will prompt for a name and create the Spicepod in the current working directory.
 
 ### Additional Example
 

@@ -1,11 +1,11 @@
 ---
-title: "catalogs"
-sidebar_label: "catalogs"
+title: 'catalogs'
+sidebar_label: 'catalogs'
 pagination_prev: null
 pagination_next: null
 ---
 
-Lists [catalogs](/components/catalogs) currnently loaded by the Spice runtime.
+Lists [catalogs](/components/catalogs) currently loaded by the Spice runtime.
 
 ### Requirements
 

@@ -1,6 +1,6 @@
 ---
-title: "search"
-sidebar_label: "search"
+title: 'search'
+sidebar_label: 'search'
 pagination_prev: null
 pagination_next: null
 ---
@@ -21,7 +21,7 @@ spice search [query] [flags]
 
 | Name              | Description                              | Default                 |
 | ----------------- | ---------------------------------------- | ----------------------- |
-| `--cloud`         | Whether to use cloud instance for search | False                   |
+| `--cloud`         | Whether to use cloud instance for search | `false`                 |
 | `--limit`         | Limit number of search results           | N/A                     |
 | `--model`         | Model to use for search                  | N/A                     |
 | `--http-endpoint` | HTTP endpoint for search                 | `http://localhost:8090` |

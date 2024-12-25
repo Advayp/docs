@@ -1,11 +1,11 @@
 ---
-title: "datasets"
-sidebar_label: "datasets"
+title: 'datasets'
+sidebar_label: 'datasets'
 pagination_prev: null
 pagination_next: null
 ---
 
-Lists datasets loaded or to be loaded by the Spice runtime.
+Lists datasets loaded by the Spice runtime.
 
 ### Requirements
 

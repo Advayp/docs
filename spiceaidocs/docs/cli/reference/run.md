@@ -1,6 +1,6 @@
 ---
-title: "run"
-sidebar_label: "run"
+title: 'run'
+sidebar_label: 'run'
 pagination_prev: null
 pagination_next: null
 ---
@@ -27,7 +27,7 @@ Flags that are passed to the `spiced` runtime directly.
 | `--http`                 | Configure runtime HTTP address                                                                                              | `127.0.0.1:8090`  |
 | `--flight`               | Configure runtime Flight address                                                                                            | `127.0.0.1:50051` |
 | `--open_telemetry`       | Configure runtime OpenTelemetry address                                                                                     | `127.0.0.1:50052` |
-| `--tls-enabled`          | Enable TLS                                                                                                                  | `False`           |
+| `--tls-enabled`          | Enable TLS                                                                                                                  | `false`           |
 | `--tls-certificate`      | The TLS PEM-encoded certificate                                                                                             | N/A               |
 | `--tls-certificate-file` | Path to the TLS PEM-encoded certificate file                                                                                | N/A               |
 | `--tls-key`              | The TLS PEM-encoded key                                                                                                     | N/A               |

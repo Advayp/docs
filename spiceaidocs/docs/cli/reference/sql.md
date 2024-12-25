@@ -1,6 +1,6 @@
 ---
-title: "sql"
-sidebar_label: "sql"
+title: 'sql'
+sidebar_label: 'sql'
 pagination_prev: null
 pagination_next: null
 ---
@@ -9,19 +9,18 @@ Start an interactive SQL query session against the Spice runtime
 
 ### Usage
 
-```shell 
+```shell
 spice sql [flags]
 ```
 
 #### Flags
 
-- `--tls-root-certificate-file`   The path to the root certificate file used to verify the Spice.ai runtime server certificate
-- `-h`, `--help`   Print this help message
-
+- `--tls-root-certificate-file` The path to the root certificate file used to verify the Spice.ai runtime server certificate
+- `-h`, `--help` Print this help message
 
 ### Examples
 
-```shell 
+```shell
 $ spice sql
 Welcome to the Spice.ai SQL REPL! Type 'help' for help.
 
